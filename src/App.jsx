@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import AuthPanel from "./AuthPanel";
+import ContinueWatching from "./ContinueWatching";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -316,7 +317,7 @@ function handleLogout() {
                   Explore anime <span>↗</span>
                 </button>
                 <div className="hero-note">
-                  <span className="note-line" /> A universe of stories, one
+                  <span className="note-line" /> A universe of stories, all one
                   click away
                 </div>
               </div>
@@ -367,7 +368,7 @@ function handleLogout() {
                 </div>
               ) : anime.length === 0 ? (
                 <div className="status-message">
-                  No titles found. Try a different anime name.
+                  No titles found, Try a different anime name.
                 </div>
               ) : (
                 <div className="anime-grid">
@@ -381,6 +382,8 @@ function handleLogout() {
                 </div>
               )}
             </section>
+
+            <ContinueWatching token={token} />
 
             {watchlist.length > 0 && (
               <section className="section watchlist-section" id="watchlist">
@@ -454,6 +457,7 @@ function handleLogout() {
             </div>
           </section>
         )}
+        <ContinueWatching token={token} anime={selected} />
       </main>
 
       <footer className="footer">
